@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Cricbuzz from './components/Cricbuzz'; 
+import MatchDetail from './MatchDetail'; // Create this component
+import Demo from './components/Demo';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Demo />} />
+                <Route path="/match/:id" element={<MatchDetail />} />
+                <Route path="/match/:id" element={<MatchDetail />} />
+                <Route path="/match/:id" element={<MatchDetail />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
