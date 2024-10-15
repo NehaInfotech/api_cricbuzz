@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
 function Demo() {
     const [data, setData] = useState(null);
 
     const getdata = () => {
         axios.get('https://cricbuzz-cricket.p.rapidapi.com/matches/v1/recent', {
             headers: { 
-                'x-rapidapi-key': '3cb3672bdemshf98aeb617e26551p139da4jsn8fc3db04384d',
+                'x-rapidapi-key': '9d61ba58e1msh9384af565faa7f0p1bea56jsnc5789c10d7f7',
                 'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
             }
         })
@@ -25,7 +26,6 @@ function Demo() {
         getdata();
     }, []);
 
-
     if (!data) {
         return <div>Loading...</div>;
     }
@@ -33,15 +33,15 @@ function Demo() {
 
     return (
         <div>
-            <ul>
-            {matches.slice(0, 5).map((match, i) => (
-                    <li key={i}>
-                        <Link to={`/match/${match.id}`}> {/* Assuming match has an id property */}
-                            <p>{match.matchType}</p>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+             <ul>
+            {matches.slice(0, 4).map((match) => ( // Ensure to show 4 matches
+                <li key={match.id}>
+                    <Link to={`/match/${match.id}`}> {/* Use match.id for routing */}
+                        <p>{match.matchType}</p>
+                    </Link>
+                </li>
+            ))}
+        </ul>
         </div>
     );
 }
